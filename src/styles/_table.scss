@@ -1,0 +1,110 @@
+$color-gray:#EBEEF5;
+$bg-gray:#F2F2F2;
+
+.th-color {
+    .el-table {
+        th {
+            background: $color-gray;
+        }
+    }
+}
+
+.el-table th {
+    padding: 10px 0;
+    background: $bg-gray;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.el-table {
+    font-size: 14px;
+
+    .el-input.is-disabled .el-input__inner {
+        border-color: transparent;
+        background: transparent;
+        color: #606266;
+    }
+
+    &.th-color {
+        th {
+            background: $bg-gray;
+        }
+    }
+
+    &.el-table--fit,
+    &.el-table--border {
+        th {
+            padding: 10px 0; // font-size: 13px;
+            // font-weight: normal
+        }
+
+        th>.cell {
+            color: #666;
+        }
+
+        td {
+            padding: 10px 0;
+            // text-align: left;
+            // text-align: center;
+            font-size: 13px
+        }
+
+        .cell {
+            min-height: 23px;
+            line-height: 23px;
+
+            .el-input__inner,
+            .el-form-item__content,
+            .el-select {
+                min-height: 23px;
+                line-height: 23px;
+            }
+
+            .el-form-item {
+                margin: 0;
+            }
+
+            .el-input__icon {
+                line-height: 23px;
+            }
+        }
+    }
+
+    td {
+        padding: 10px 0;
+        // text-align: center;
+        font-size: 13px
+    }
+}
+
+.el-table--border,
+.el-table--group {
+    border: 1px solid $color-gray;
+    border-right: none;
+    border-bottom: none;
+}
+
+.el-table--border::after,
+.el-table--group::after,
+.el-table::before,
+.el-table__fixed-right::before,
+.el-table__fixed::before {
+    // background: #ddd;
+}
+
+.el-table__empty-block {
+    min-height: 44px;
+}
+
+
+.hide-heard {
+    .el-checkbox {
+        display: none;
+    }
+}
+
+
+.el-tooltip__popper {
+    max-width: 60% !important;
+}

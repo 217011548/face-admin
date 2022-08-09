@@ -1,0 +1,56 @@
+#ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: face-admin
+  namespace: coding
+  annotations:
+    "nginx.ingress.kubernetes.io/proxy-body-size": "300m"
+spec:
+  rules:
+    - host: face-admin.coding-space.cn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: face-admin
+                port:
+                  number: 80
+---
+#service
+apiVersion: v1
+kind: Service
+metadata:
+  name: face-admin
+  namespace: coding
+spec:
+  selector:
+    app: face-admin
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: face-admin
+  namespace: coding
+spec:
+  selector:
+    matchLabels:
+      app: face-admin
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: face-admin
+    spec:
+      containers:
+        - name: face-admin
+          image: registry-vpc.cn-zhangjiakou.aliyuncs.com/guanweiming/www:${CI_PIPELINE_ID}
+          ports:
+            - containerPort: 80
